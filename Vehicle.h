@@ -20,9 +20,9 @@ public:
 	void Accelerate(double mph);
 
 	// To help with writing test cases
-	const double getSpeed();
-	const double getFuel();
-	const double getMaxFuel();
+	const double GetSpeed();
+	const double GetFuel();
+	const double GetMaxFuel();
 };
 
 // default constructor
@@ -44,17 +44,17 @@ Vehicle::Vehicle(double speed, double fuel, double maxFuel, double accelerateBur
 }
 
 // GETTERS
-const double Vehicle::getSpeed() 
+const double Vehicle::GetSpeed() 
 {
 	return this->speed;
 }
 
-const double Vehicle::getFuel() 
+const double Vehicle::GetFuel() 
 {
 	return this->fuel;
 }
 
-const double Vehicle::getMaxFuel() 
+const double Vehicle::GetMaxFuel() 
 {
 	return this->maxFuel;
 }

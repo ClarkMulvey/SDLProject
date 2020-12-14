@@ -18,7 +18,7 @@ public:
 	void Climb(double feet);
 
 	// To help with writing test cases
-	const double getAltitude();
+	const double GetAltitude();
 
 };
 
@@ -36,7 +36,7 @@ Aircraft::Aircraft(double speed, double fuel, double maxFuel, double accelerateB
 	this->climbBurnRate = climbBurnRate;
 }
 
-const double Aircraft::getAltitude() 
+const double Aircraft::GetAltitude() 
 {
 	return this->altitude;
 }
@@ -76,51 +76,51 @@ void Aircraft::Climb(double feet)
 void TestAircraftRefuel(Aircraft& aircraft) 
 {	
 	// ensure no fuel is added if argument is zero
-	double currentFuel = aircraft.getFuel();
+	double currentFuel = aircraft.GetFuel();
 	aircraft.Refuel(double(0));
-	assert(currentFuel == aircraft.getFuel());
+	assert(currentFuel == aircraft.GetFuel());
 
 	// ensure fuel does not exceed maximum allowed fuel
-	aircraft.Refuel(aircraft.getMaxFuel() + double(1.0));
-	assert(aircraft.getFuel() == aircraft.getMaxFuel());
+	aircraft.Refuel(aircraft.GetMaxFuel() + double(1.0));
+	assert(aircraft.GetFuel() == aircraft.GetMaxFuel());
 }
 
 void TestAircraftAccelerate(Aircraft& aircraft) 
 {
 	// ensure each additional mph decreases fuel by 0.2 gallons
 	//    First fill up the tank
-	aircraft.Refuel(aircraft.getMaxFuel());
+	aircraft.Refuel(aircraft.GetMaxFuel());
 	double mphIncrease = double(1);
 	aircraft.Accelerate(mphIncrease);
-	assert(aircraft.getFuel() == aircraft.getMaxFuel() - (mphIncrease * 0.2));
+	assert(aircraft.GetFuel() == aircraft.GetMaxFuel() - (mphIncrease * 0.2));
 
 	// ensure fuel isn't used if user inputs a too costly acceleration operation
 	//    First fill up the tank
-	aircraft.Refuel(aircraft.getMaxFuel());
+	aircraft.Refuel(aircraft.GetMaxFuel());
 	//    Find maximum expendable maneuver
-	double maxMphIncrease = (aircraft.getMaxFuel() / 0.2);
+	double maxMphIncrease = (aircraft.GetMaxFuel() / 0.2);
 	aircraft.Accelerate(maxMphIncrease + double(1));
 	//    Ensure no fuel was spent
-	assert(aircraft.getFuel() == aircraft.getMaxFuel());
+	assert(aircraft.GetFuel() == aircraft.GetMaxFuel());
 }
 
 void TestAircraftClimb(Aircraft& aircraft) 
 {
 	// ensure each additional foot decreases fuel by 0.01 gallons
 	//    First fill up the tank
-	aircraft.Refuel(aircraft.getMaxFuel());
+	aircraft.Refuel(aircraft.GetMaxFuel());
 	double altIncrease = double(1);
 	aircraft.Climb(altIncrease);
-	assert(aircraft.getFuel() == aircraft.getMaxFuel() - (altIncrease * 0.01));
+	assert(aircraft.GetFuel() == aircraft.GetMaxFuel() - (altIncrease * 0.01));
 
 	// ensure fuel isn't used if user inputs a too costly climbing operation
 	//    First fill up the tank
-	aircraft.Refuel(aircraft.getMaxFuel());
+	aircraft.Refuel(aircraft.GetMaxFuel());
 	//    Find maximum expendable maneuver
-	double maxAltIncrease = (aircraft.getMaxFuel() / 0.01);
+	double maxAltIncrease = (aircraft.GetMaxFuel() / 0.01);
 	aircraft.Climb(maxAltIncrease + double(1));
 	//    Ensure no fuel was spent
-	assert(aircraft.getFuel() == aircraft.getMaxFuel());
+	assert(aircraft.GetFuel() == aircraft.GetMaxFuel());
 }
 
 #endif //AIRFCRAFT_H
