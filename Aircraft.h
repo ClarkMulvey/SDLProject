@@ -8,7 +8,7 @@
 class Aircraft : public Vehicle 
 {
 private:
-	double altitude;
+	double altitude; 
 	double climbBurnRate;
 
 public:

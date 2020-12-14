@@ -12,4 +12,11 @@ int main()
     TestAircraftRefuel(artemis1);
     TestAircraftAccelerate(artemis1);
     TestAircraftClimb(artemis1);
+
+    Automobile getawayCar(double(120), double(10), double(12), double(0.125), "white");
+
+    // Test the Automobile methods - if there are no assert failures they all pass
+    TestAutomobileRefuel(getawayCar);
+    TestAutomobileAccelerate(getawayCar);
+    TestAutomobileChangeColor(getawayCar);
 }
